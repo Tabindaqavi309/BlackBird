@@ -1,0 +1,19 @@
+{
+  "name": "blackbirdy",
+  "version": "1.0.1",
+  "description": "Creates logs register when any user uses the website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tabindaqavi309/BlackBird.git"
+  },
+  "author": "Tabinda Qavi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tabindaqavi309/BlackBird/issues"
+  },
+  "homepage": "https://github.com/Tabindaqavi309/BlackBird#readme"
+}
