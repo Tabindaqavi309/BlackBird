@@ -56,7 +56,7 @@ function BlackBird() {
   console.log("Browser Language: " + window.navigator.language);
   console.log("Platform:" + window.navigator.platform);
   console.log("User-agent header:" + window.navigator.userAgent);
-  navigator.geolocation.getCurrentPosition(console.log, console.log);
+  navigator.geolocation.getCurrentPosition(successfulLookup, console.log);
   const successfulLookup = (position) => {
     const { latitude, longitude } = position.coords;
     fetch(
