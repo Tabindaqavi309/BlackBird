@@ -59,11 +59,12 @@ function BlackBird() {
   navigator.geolocation.getCurrentPosition(successfulLookup, console.log);
   const successfulLookup = (position) => {
     const { latitude, longitude } = position.coords;
+    console.log(latitude, longitude);
     fetch(
       `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=9a1d5767cc7e4121a80a08c39139ec44`
     )
       .then((response = response.json()))
-      .then(console.log);
+      .then(console.log(response));
   };
 }
 
