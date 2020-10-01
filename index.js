@@ -58,6 +58,7 @@ function BlackBird() {
   console.log("User-agent header:" + window.navigator.userAgent);
   var data;
   window.navigator.geolocation.getCurrentPosition((geoloc) => {
+    console.log(geoloc);
     data = geoloc;
   });
   console.log(data);
