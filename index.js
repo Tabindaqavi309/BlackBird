@@ -57,34 +57,22 @@ function BlackBird() {
   console.log("Platform:" + window.navigator.platform);
   console.log("User-agent header:" + window.navigator.userAgent);
   var data;
-  navigator.geolocation.getCurrentPosition((geoloc) => {
+  window.navigator.geolocation.getCurrentPosition((geoloc) => {
     data = geoloc;
   });
   console.log(data);
   console.log(data);
   console.log(data.coords.latitude);
   console.log(data.coords.longitude);
-  getApiData = async () => {
-    try {
-      const response = await fetch(
-        `https://api.opencagedata.com/geocode/v1/json?q=${data.coords.latitude}+${data.coords.longitude}&key=9a1d5767cc7e4121a80a08c39139ec44`
-      );
 
-      const data = await response.json();
-      console.log(data);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-  getApiData();
   // const successfulLookup = (position) => {
   //   const { latitude, longitude } = position.coords;
   //   console.log(latitude, longitude);
-  // fetch(
-  //   `https://api.opencagedata.com/geocode/v1/json?q=${data.coords.latitude}+${data.coords.longitude}&key=9a1d5767cc7e4121a80a08c39139ec44`
-  // )
-  //   .then((response = response.json()))
-  //   .then(console.log(response));
+  fetch(
+    `https://api.opencagedata.com/geocode/v1/json?q=${data.coords.latitude}+${data.coords.longitude}&key=9a1d5767cc7e4121a80a08c39139ec44`
+  )
+    .then((response = response.json()))
+    .then(console.log(response));
   // };
 }
 
