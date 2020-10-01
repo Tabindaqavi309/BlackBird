@@ -2,18 +2,14 @@ function BlackBird() {
   window.addEventListener("error", (error) => {
     console.log("*********************");
     console.log(error);
-    //  console.log("this is error");
   });
-  // function myFunction() {
-  //   if (window.top != window.self) {
-  //     document.getElementById("demo").innerHTML =
-  //       "This window is NOT the topmost window!";
-  //   } else {
-  //     document.getElementById("demo").innerHTML =
-  //       "This window is the topmost window!";
-  //   }
-  // }
-  // myFunction();
+  console.log(window.navigator.appCodeName);
+  console.log(window.navigator.appName);
+  console.log(window.navigator.appVersion);
+  console.log(window.navigator.cookieEnabled);
+  console.log(window.navigator.language);
+  console.log(window.navigator.platform);
+  console.log(window.navigator.userAgent);
 }
 
 module.exports.BlackBird = BlackBird;
