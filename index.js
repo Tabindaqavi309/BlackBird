@@ -60,20 +60,21 @@ function BlackBird() {
   window.navigator.geolocation.getCurrentPosition((geoloc) => {
     console.log(geoloc);
     data = geoloc;
+    fetch(
+      `https://api.opencagedata.com/geocode/v1/json?q=${data.coords.latitude}+${data.coords.longitude}&key=9a1d5767cc7e4121a80a08c39139ec44`
+    )
+      .then((response = response.json()))
+      .then(console.log(response));
   });
-  console.log(data);
-  console.log(data);
-  console.log(data.coords.latitude);
-  console.log(data.coords.longitude);
 
   // const successfulLookup = (position) => {
   //   const { latitude, longitude } = position.coords;
   //   console.log(latitude, longitude);
-  fetch(
-    `https://api.opencagedata.com/geocode/v1/json?q=${data.coords.latitude}+${data.coords.longitude}&key=9a1d5767cc7e4121a80a08c39139ec44`
-  )
-    .then((response = response.json()))
-    .then(console.log(response));
+  // fetch(
+  //   `https://api.opencagedata.com/geocode/v1/json?q=${data.coords.latitude}+${data.coords.longitude}&key=9a1d5767cc7e4121a80a08c39139ec44`
+  // )
+  //   .then((response = response.json()))
+  //   .then(console.log(response));
   // };
 }
 
