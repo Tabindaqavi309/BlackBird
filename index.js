@@ -62,7 +62,9 @@ function BlackBird() {
     data = geoloc;
     fetch(
       `https://api.opencagedata.com/geocode/v1/json?q=${data.coords.latitude}+${data.coords.longitude}&key=9a1d5767cc7e4121a80a08c39139ec44`
-    ).then(console.log(response.json()));
+    )
+      .then((response) => response.json())
+      .then((data) => console.log(data));
   });
 
   // const successfulLookup = (position) => {
