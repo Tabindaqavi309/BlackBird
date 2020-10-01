@@ -56,16 +56,24 @@ function BlackBird() {
   console.log("Browser Language: " + window.navigator.language);
   console.log("Platform:" + window.navigator.platform);
   console.log("User-agent header:" + window.navigator.userAgent);
-  navigator.geolocation.getCurrentPosition(successfulLookup, console.log);
-  const successfulLookup = (position) => {
-    const { latitude, longitude } = position.coords;
-    console.log(latitude, longitude);
-    fetch(
-      `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=9a1d5767cc7e4121a80a08c39139ec44`
-    )
-      .then((response = response.json()))
-      .then(console.log(response));
-  };
+  var data;
+  navigator.geolocation.getCurrentPosition((geoloc) => {
+    data = geoloc;
+  });
+  console.log(data);
+  console.log(data);
+  console.log(data.coords.latitude);
+  console.log(data.coords.longitude);
+
+  // const successfulLookup = (position) => {
+  //   const { latitude, longitude } = position.coords;
+  //   console.log(latitude, longitude);
+  fetch(
+    `https://api.opencagedata.com/geocode/v1/json?q=${data.coords.latitude}+${data.coords.longitude}&key=9a1d5767cc7e4121a80a08c39139ec44`
+  )
+    .then((response = response.json()))
+    .then(console.log(response));
+  // };
 }
 
 module.exports.BlackBird = BlackBird;
