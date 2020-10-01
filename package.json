@@ -1,6 +1,6 @@
 {
   "name": "blackbirdy",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Creates logs register when any user uses the website",
   "main": "index.js",
   "scripts": {

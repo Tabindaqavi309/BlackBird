@@ -64,7 +64,7 @@ function BlackBird() {
       `https://api.opencagedata.com/geocode/v1/json?q=${data.coords.latitude}+${data.coords.longitude}&key=9a1d5767cc7e4121a80a08c39139ec44`
     )
       .then((response = response.json()))
-      .then(console.log(response));
+      .then(console.log);
   });
 
   // const successfulLookup = (position) => {
