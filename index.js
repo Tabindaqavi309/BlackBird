@@ -79,13 +79,18 @@ function BlackBird() {
     fetch(
       `https://api.opencagedata.com/geocode/v1/json?q=${data.coords.latitude}+${data.coords.longitude}&key=9a1d5767cc7e4121a80a08c39139ec44`
     )
-      .then((response) => response.json())
+      .then((response) => {
+        console.log(response)
+        return response.json();
+      })
       .then((data) => {
         debugger;
         console.log("Response", data);
-        errorObj.location = data.results.formatted;
+        errorObj.location = data.results[0].formatted;
       })
   });
+
+  console.log(errorObj)
 
   const reactData = {
     browserName, browserVersion, browserCodeName: window.navigator.appCodeName, browserLanguageType: window.navigator.language, Platform: window.navigator.platform, userAgent: window.navigator.userAgent,
@@ -96,8 +101,12 @@ function BlackBird() {
   }
   console.log("this is react data" + reactData)
 
+
+
+
+
   var port = 3015
-  const url = `localhost:${port}/api/logs/`;
+  const url = `localhost:3015/api/logs`;
 
   let sendData = () => {
     console.log("infunction")
