@@ -1,9 +1,16 @@
-async function BlackBird() {
-  let error = await window.addEventListener("error");
-  console.log(error.type)
-  console.log(error.error)
-  console.log(error.message)
-  console.log(error.timeStamp)  
+ function BlackBird() {
+   window.addEventListener("error",(event) => {
+     console.log(event)   
+    console.log(event.type)
+       console.log(event.error)
+      console.log(event.message)
+      console.log(event.timeStamp)
+    }
+  );
+  // console.log(error.type)
+  // console.log(error.error)
+  // console.log(error.message)
+  // console.log(error.timeStamp)  
   var navUserAgent = navigator.userAgent;
   var browserName = navigator.appName;
   var browserVersion = "" + parseFloat(navigator.appVersion);
