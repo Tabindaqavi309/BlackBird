@@ -1,17 +1,18 @@
 const axios = require('axios')
+
 function BlackBird() {
-   
-   let errorObj = {}
-   window.addEventListener("error",(event) => {
-     console.log(event) 
-     errorObj.event = event;  
-    console.log(event.type)
-    errorObj.type = event.type;
-    errorObj.error = event.error;
-       console.log(event.error)
-       errorObj.message= event.message;
+
+  let errorObj = {}
+  window.addEventListener("error", (event) => {
+      console.log(event)
+      errorObj.event = event;
+      console.log(event.type)
+      errorObj.type = event.type;
+      errorObj.error = event.error;
+      console.log(event.error)
+      errorObj.message = event.message;
       console.log(event.message)
-       console.log(event.timeStamp)
+      console.log(event.timeStamp)
     }
   );
   // console.log(error.type)
@@ -70,6 +71,7 @@ function BlackBird() {
   console.log("Browser Language: " + window.navigator.language);
   console.log("Platform:" + window.navigator.platform);
   console.log("User-agent header:" + window.navigator.userAgent);
+
   var data;
   window.navigator.geolocation.getCurrentPosition((geoloc) => {
     console.log(geoloc);
@@ -78,33 +80,33 @@ function BlackBird() {
       `https://api.opencagedata.com/geocode/v1/json?q=${data.coords.latitude}+${data.coords.longitude}&key=9a1d5767cc7e4121a80a08c39139ec44`
     )
       .then((response) => response.json())
-      .then((data) => { 
+      .then((data) => {
         debugger;
         console.log("Response", data);
         errorObj.location = data.results.formatted;
       })
   });
-  const reactData= {
-    browserName,browserVersion,browserCodeName:window.navigator.appCodeName,browserLanguageType:window.navigator.language,Platform:window.navigator.platform,userAgent:window.navigator.userAgent,
-     
-      errorType:errorObj.type,errorMessage:errorObj.message,
-      errorDetails:errorObj.error,
 
-      createdBy:ABC,
-    userLocation:errorObj.location
+  const reactData = {
+    browserName, browserVersion, browserCodeName: window.navigator.appCodeName, browserLanguageType: window.navigator.language, Platform: window.navigator.platform, userAgent: window.navigator.userAgent,
+    errorType: errorObj.type, errorMessage: errorObj.message,
+    errorDetails: errorObj.error,
+    createdBy: "ABC",
+    userLocation: errorObj.location
   }
-  console.log("this is react data"+reactData)
-  var port = 3015
-const url = `localhost:${port}/api/logs/`;
+  console.log("this is react data" + reactData)
 
-let sendData = () => {
-  console.log("infunction")
-  console.log(reactData)
-axios.post(url, reactData)
-   .then(res => console.log('Data send',res))
-   .catch(err => console.log(err.data))
-}
-sendData()
+  var port = 3015
+  const url = `localhost:${port}/api/logs/`;
+
+  let sendData = () => {
+    console.log("infunction")
+    console.log(reactData)
+    axios.post(url, reactData)
+      .then(res => console.log('Data send', res))
+      .catch(err => console.log(err.data))
+  }
+  sendData()
   // /**
   //  * Capture error data for debugging in web console.
   //  */
@@ -353,15 +355,15 @@ sendData()
   //     setTimeout(fn, 0);
   //   }
 
-    // const successfulLookup = (position) => {
-    //   const { latitude, longitude } = position.coords;
-    //   console.log(latitude, longitude);
-    // fetch(
-    //   `https://api.opencagedata.com/geocode/v1/json?q=${data.coords.latitude}+${data.coords.longitude}&key=9a1d5767cc7e4121a80a08c39139ec44`
-    // )
-    //   .then((response = response.json()))
-    //   .then(console.log(response));
-    // };
+  // const successfulLookup = (position) => {
+  //   const { latitude, longitude } = position.coords;
+  //   console.log(latitude, longitude);
+  // fetch(
+  //   `https://api.opencagedata.com/geocode/v1/json?q=${data.coords.latitude}+${data.coords.longitude}&key=9a1d5767cc7e4121a80a08c39139ec44`
+  // )
+  //   .then((response = response.json()))
+  //   .then(console.log(response));
+  // };
   // })();
 }
 
