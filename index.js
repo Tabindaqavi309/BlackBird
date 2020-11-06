@@ -1,10 +1,15 @@
  function BlackBird() {
+   let errorObj = {}
    window.addEventListener("error",(event) => {
-     console.log(event)   
+     console.log(event) 
+     errorObj.event = event;  
     console.log(event.type)
+    errorObj.type = event.type;
+    errorObj.error = event.error;
        console.log(event.error)
+       errorObj.message= event.message;
       console.log(event.message)
-      console.log(event.timeStamp)
+       console.log(event.timeStamp)
     }
   );
   // console.log(error.type)
@@ -71,24 +76,28 @@
       `https://api.opencagedata.com/geocode/v1/json?q=${data.coords.latitude}+${data.coords.longitude}&key=9a1d5767cc7e4121a80a08c39139ec44`
     )
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) =>{ console.log(data)
+        errorObj.location = data.results.formatted;})
   });
   const reactData= {
-    browser: window.navigator.appCodeName,
- type: "runtime error",
-    "details":"variable t is not defined",
-    "createdBy":"Tabi"
-  
-  }
-  console.log()
-//   var port = 3015
-// const url = `localhost:${port}/api/logs/`;
+    browserName,browserVersion,browserCodeName:window.navigator.appCodeName,browserLanguageType:window.navigator.language,Platform:window.navigator.platform,userAgent:window.navigator.userAgent,
+     
+      errorType:errorObj.type,errorMessage:errorObj.message,
+      errorDetails:errorObj.error,
 
-// let sendData = () => {
-// axios.post(url, reactData)
-//    .then(res => console.log('Data send'))
-//    .catch(err => console.log(err.data))
-// }
+      createdBy:ABC,
+    userLocation:errorObj.location
+  }
+  console.log(reactData)
+  var port = 3015
+const url = `localhost:${port}/api/logs/`;
+
+let sendData = () => {
+axios.post(url, reactData)
+   .then(res => console.log('Data send'))
+   .catch(err => console.log(err.data))
+}
+sendData()
   // /**
   //  * Capture error data for debugging in web console.
   //  */
