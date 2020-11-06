@@ -1,4 +1,6 @@
- function BlackBird() {
+const axios = require('axios')
+function BlackBird() {
+   
    let errorObj = {}
    window.addEventListener("error",(event) => {
      console.log(event) 
@@ -88,13 +90,15 @@
       createdBy:ABC,
     userLocation:errorObj.location
   }
-  console.log(reactData)
+  console.log("this is react data"+reactData)
   var port = 3015
 const url = `localhost:${port}/api/logs/`;
 
 let sendData = () => {
+  console.log("infunction")
+  console.log(reactData)
 axios.post(url, reactData)
-   .then(res => console.log('Data send'))
+   .then(res => console.log('Data send',res))
    .catch(err => console.log(err.data))
 }
 sendData()
