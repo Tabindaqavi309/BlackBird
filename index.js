@@ -138,7 +138,7 @@ async function BlackBird() {
 
 
       var port = 3015
-      const url = `localhost:3015/api/logs`;
+      const url = `http://localhost:3015/api/logs`;
 
       let sendData = () => {
         console.log("infunction")
