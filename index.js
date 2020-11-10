@@ -10,7 +10,7 @@ async function BlackBird() {
         console.log(event.type)
         errorObj.type = event.type;
         errorObj.error = event.error.stack;
-        console.log(event.error.stack)
+        console.log(typeof event.error.stack)
       // console.log(event.error.toString().replace( /[\r\n]+/gm, "" ))
       // console.log(event.error.replace( /[\r\n]+/gm, "" ))
         errorObj.message = event.message;
