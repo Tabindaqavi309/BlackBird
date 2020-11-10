@@ -121,298 +121,294 @@ async function BlackBird() {
           errorObj.location = data.results[0].formatted;
         })
 
-  //   console.log(`The error object contains: ${err}`)
-  // console.log(`The location object contains: ${locat}` )
-
-
-  console.log(errorObj)
-
-  const reactData = {
-    browserName, browserVersion, browserCodeName: window.navigator.appCodeName, browserLanguageType: window.navigator.language, Platform: window.navigator.platform, userAgent: window.navigator.userAgent,
-    errorType: errorObj.type, errorMessage: errorObj.message,
-    errorDetails: errorObj.error,
-    createdBy: "ABC",
-    userLocation: errorObj.location
-  }
-  console.log(reactData)
-
-
-
-
-
-  var port = 3015
-  const url = `localhost:3015/api/logs`;
-
-  let sendData = () => {
-    console.log("infunction")
-    console.log(reactData)
-    axios.post(url, reactData,{
-      headers: {
-        'Content-Type': 'application/json-patch+json',
-      },
+      //   console.log(`The error object contains: ${err}`)
+      // console.log(`The location object contains: ${locat}` )
     })
-      .then(res => console.log('Data send', res))
-      .catch(err => console.log("the error is"+err.data))
-  }
-  sendData()
-  // /**
-  //  * Capture error data for debugging in web console.
-  //  */
-  // (function () {
-  //   var captures = [];
 
-  //   /**
-  //    * Wait until `window.onload`, so any external scripts
-  //    * you might load have a chance to set their own error handlers,
-  //    * which we don't want to override.
-  //    */
+      console.log(errorObj)
 
-  //   window.addEventListener("load", onload);
+      const reactData = {
+        browserName, browserVersion, browserCodeName: window.navigator.appCodeName, browserLanguageType: window.navigator.language, Platform: window.navigator.platform, userAgent: window.navigator.userAgent,
+        errorType: errorObj.type, errorMessage: errorObj.message,
+        errorDetails: errorObj.error,
+        createdBy: "ABC",
+        userLocation: errorObj.location
+      }
+      console.log(reactData)
 
-  //   /**
-  //    * Custom global function to standardize
-  //    * window.onerror so it works like you'd think.
-  //    *
-  //    * @see http://www.quirksmode.org/dom/events/error.html
-  //    */
 
-  //   window.onanyerror = window.onanyerror || onanyerrorx;
+      var port = 3015
+      const url = `localhost:3015/api/logs`;
 
-  //   /**
-  //    * Hook up all error handlers after window loads.
-  //    */
+      let sendData = () => {
+        console.log("infunction")
+        console.log(reactData)
+        axios.post(url, reactData, {
+          headers: {
+            'Content-Type': 'application/json-patch+json',
+          },
+        })
+          .then(res => console.log('Data send', res))
+          .catch(err => console.log("the error is" + err.data))
+      }
+      sendData()
+      // /**
+      //  * Capture error data for debugging in web console.
+      //  */
+      // (function () {
+      //   var captures = [];
 
-  //   function onload() {
-  //     handleGlobal();
-  //     handleXMLHttp();
-  //     handleImage();
-  //     handleScript();
-  //     handleEvents();
-  //   }
+      //   /**
+      //    * Wait until `window.onload`, so any external scripts
+      //    * you might load have a chance to set their own error handlers,
+      //    * which we don't want to override.
+      //    */
 
-  //   /**
-  //    * Handle global window events.
-  //    */
+      //   window.addEventListener("load", onload);
 
-  //   function handleGlobal() {
-  //     var onerrorx = window.onerror;
-  //     window.addEventListener("error", onerror);
+      //   /**
+      //    * Custom global function to standardize
+      //    * window.onerror so it works like you'd think.
+      //    *
+      //    * @see http://www.quirksmode.org/dom/events/error.html
+      //    */
 
-  //     function onerror(msg, url, line, col, error) {
-  //       window.onanyerror.apply(this, arguments);
-  //       if (onerrorx) return onerrorx.apply(null, arguments);
-  //     }
-  //   }
+      //   window.onanyerror = window.onanyerror || onanyerrorx;
 
-  //   /**
-  //    * Handle ajax request errors.
-  //    */
+      //   /**
+      //    * Hook up all error handlers after window loads.
+      //    */
 
-  //   function handleXMLHttp() {
-  //     var sendx = XMLHttpRequest.prototype.send;
-  //     window.XMLHttpRequest.prototype.send = function () {
-  //       handleAsync(this);
-  //       return sendx.apply(this, arguments);
-  //     };
-  //   }
+      //   function onload() {
+      //     handleGlobal();
+      //     handleXMLHttp();
+      //     handleImage();
+      //     handleScript();
+      //     handleEvents();
+      //   }
 
-  //   /**
-  //    * Handle image errors.
-  //    */
+      //   /**
+      //    * Handle global window events.
+      //    */
 
-  //   function handleImage() {
-  //     var ImageOriginal = window.Image;
-  //     window.Image = ImageOverride;
+      //   function handleGlobal() {
+      //     var onerrorx = window.onerror;
+      //     window.addEventListener("error", onerror);
 
-  //     /**
-  //      * New `Image` constructor. Might cause some problems,
-  //      * but not sure yet. This is at least a start, and works on chrome.
-  //      */
+      //     function onerror(msg, url, line, col, error) {
+      //       window.onanyerror.apply(this, arguments);
+      //       if (onerrorx) return onerrorx.apply(null, arguments);
+      //     }
+      //   }
 
-  //     function ImageOverride() {
-  //       var img = new ImageOriginal();
-  //       onnext(function () {
-  //         handleAsync(img);
-  //       });
-  //       return img;
-  //     }
-  //   }
+      //   /**
+      //    * Handle ajax request errors.
+      //    */
 
-  //   /**
-  //    * Handle script errors.
-  //    */
+      //   function handleXMLHttp() {
+      //     var sendx = XMLHttpRequest.prototype.send;
+      //     window.XMLHttpRequest.prototype.send = function () {
+      //       handleAsync(this);
+      //       return sendx.apply(this, arguments);
+      //     };
+      //   }
 
-  //   function handleScript() {
-  //     var HTMLScriptElementOriginal = window.HTMLScriptElement;
-  //     window.HTMLScriptElement = HTMLScriptElementOverride;
+      //   /**
+      //    * Handle image errors.
+      //    */
 
-  //     /**
-  //      * New `HTMLScriptElement` constructor.
-  //      *
-  //      * Allows us to globally override onload.
-  //      * Not ideal to override stuff, but it helps with debugging.
-  //      */
+      //   function handleImage() {
+      //     var ImageOriginal = window.Image;
+      //     window.Image = ImageOverride;
 
-  //     function HTMLScriptElementOverride() {
-  //       var script = new HTMLScriptElement();
-  //       onnext(function () {
-  //         handleAsync(script);
-  //       });
-  //       return script;
-  //     }
-  //   }
+      //     /**
+      //      * New `Image` constructor. Might cause some problems,
+      //      * but not sure yet. This is at least a start, and works on chrome.
+      //      */
 
-  //   /**
-  //    * Handle errors in events.
-  //    *
-  //    * @see http://stackoverflow.com/questions/951791/javascript-global-error-handling/31750604#31750604
-  //    */
+      //     function ImageOverride() {
+      //       var img = new ImageOriginal();
+      //       onnext(function () {
+      //         handleAsync(img);
+      //       });
+      //       return img;
+      //     }
+      //   }
 
-  //   function handleEvents() {
-  //     var addEventListenerx = window.EventTarget.prototype.addEventListener;
-  //     window.EventTarget.prototype.addEventListener = addEventListener;
-  //     var removeEventListenerx =
-  //       window.EventTarget.prototype.removeEventListener;
-  //     window.EventTarget.prototype.removeEventListener = removeEventListener;
+      //   /**
+      //    * Handle script errors.
+      //    */
 
-  //     function addEventListener(event, handler, bubble) {
-  //       var handlerx = wrap(handler);
-  //       return addEventListenerx.call(this, event, handlerx, bubble);
-  //     }
+      //   function handleScript() {
+      //     var HTMLScriptElementOriginal = window.HTMLScriptElement;
+      //     window.HTMLScriptElement = HTMLScriptElementOverride;
 
-  //     function removeEventListener(event, handler, bubble) {
-  //       handler = handler._witherror || handler;
-  //       removeEventListenerx.call(this, event, handler, bubble);
-  //     }
+      //     /**
+      //      * New `HTMLScriptElement` constructor.
+      //      *
+      //      * Allows us to globally override onload.
+      //      * Not ideal to override stuff, but it helps with debugging.
+      //      */
 
-  //     function wrap(fn) {
-  //       fn._witherror = witherror;
+      //     function HTMLScriptElementOverride() {
+      //       var script = new HTMLScriptElement();
+      //       onnext(function () {
+      //         handleAsync(script);
+      //       });
+      //       return script;
+      //     }
+      //   }
 
-  //       function witherror() {
-  //         try {
-  //           fn.apply(this, arguments);
-  //         } catch (e) {
-  //           window.onanyerror.apply(this, e);
-  //           throw e;
-  //         }
-  //       }
-  //       return fn;
-  //     }
-  //   }
+      //   /**
+      //    * Handle errors in events.
+      //    *
+      //    * @see http://stackoverflow.com/questions/951791/javascript-global-error-handling/31750604#31750604
+      //    */
 
-  //   /**
-  //    * Handle image/ajax request errors generically.
-  //    */
+      //   function handleEvents() {
+      //     var addEventListenerx = window.EventTarget.prototype.addEventListener;
+      //     window.EventTarget.prototype.addEventListener = addEventListener;
+      //     var removeEventListenerx =
+      //       window.EventTarget.prototype.removeEventListener;
+      //     window.EventTarget.prototype.removeEventListener = removeEventListener;
 
-  //   function handleAsync(obj) {
-  //     var onerrorx = obj.onerror;
-  //     obj.onerror = onerror;
-  //     var onabortx = obj.onabort;
-  //     obj.onabort = onabort;
-  //     var onloadx = obj.onload;
-  //     obj.onload = onload;
+      //     function addEventListener(event, handler, bubble) {
+      //       var handlerx = wrap(handler);
+      //       return addEventListenerx.call(this, event, handlerx, bubble);
+      //     }
 
-  //     /**
-  //      * Handle `onerror`.
-  //      */
+      //     function removeEventListener(event, handler, bubble) {
+      //       handler = handler._witherror || handler;
+      //       removeEventListenerx.call(this, event, handler, bubble);
+      //     }
 
-  //     function onerror(error) {
-  //       window.onanyerror.call(this, error);
-  //       if (onerrorx) return onerrorx.apply(this, arguments);
-  //     }
+      //     function wrap(fn) {
+      //       fn._witherror = witherror;
 
-  //     /**
-  //      * Handle `onabort`.
-  //      */
+      //       function witherror() {
+      //         try {
+      //           fn.apply(this, arguments);
+      //         } catch (e) {
+      //           window.onanyerror.apply(this, e);
+      //           throw e;
+      //         }
+      //       }
+      //       return fn;
+      //     }
+      //   }
 
-  //     function onabort(error) {
-  //       window.onanyerror.call(this, error);
-  //       if (onabortx) return onabortx.apply(this, arguments);
-  //     }
+      //   /**
+      //    * Handle image/ajax request errors generically.
+      //    */
 
-  //     /**
-  //      * Handle `onload`.
-  //      *
-  //      * For images, you can get a 403 response error,
-  //      * but this isn't triggered as a global on error.
-  //      * This sort of standardizes it.
-  //      *
-  //      * "there is no way to get the HTTP status from a
-  //      * request made by an img tag in JavaScript."
-  //      * @see http://stackoverflow.com/questions/8108636/how-to-get-http-status-code-of-img-tags/8108646#8108646
-  //      */
+      //   function handleAsync(obj) {
+      //     var onerrorx = obj.onerror;
+      //     obj.onerror = onerror;
+      //     var onabortx = obj.onabort;
+      //     obj.onabort = onabort;
+      //     var onloadx = obj.onload;
+      //     obj.onload = onload;
 
-  //     function onload(request) {
-  //       if (request.status && request.status >= 400) {
-  //         window.onanyerror.call(this, request);
-  //       }
-  //       if (onloadx) return onloadx.apply(this, arguments);
-  //     }
-  //   }
+      //     /**
+      //      * Handle `onerror`.
+      //      */
 
-  //   /**
-  //    * Generic error handler.
-  //    *
-  //    * This shows the basic implementation,
-  //    * which you could override in your app.
-  //    */
+      //     function onerror(error) {
+      //       window.onanyerror.call(this, error);
+      //       if (onerrorx) return onerrorx.apply(this, arguments);
+      //     }
 
-  //   function onanyerrorx(entity) {
-  //     var display = entity;
+      //     /**
+      //      * Handle `onabort`.
+      //      */
 
-  //     // ajax request
-  //     if (entity instanceof XMLHttpRequest) {
-  //       // 400: http://example.com/image.png
-  //       display = entity.status + " " + entity.responseURL;
-  //     } else if (entity instanceof Event) {
-  //       // global window events, or image events
-  //       var target = entity.currentTarget;
-  //       display = target;
-  //     } else {
-  //       // not sure if there are others
-  //     }
+      //     function onabort(error) {
+      //       window.onanyerror.call(this, error);
+      //       if (onabortx) return onabortx.apply(this, arguments);
+      //     }
 
-  //     capture(entity);
-  //     console.log("[onanyerror]", display, entity);
-  //   }
+      //     /**
+      //      * Handle `onload`.
+      //      *
+      //      * For images, you can get a 403 response error,
+      //      * but this isn't triggered as a global on error.
+      //      * This sort of standardizes it.
+      //      *
+      //      * "there is no way to get the HTTP status from a
+      //      * request made by an img tag in JavaScript."
+      //      * @see http://stackoverflow.com/questions/8108636/how-to-get-http-status-code-of-img-tags/8108646#8108646
+      //      */
 
-  //   /**
-  //    * Capture stuff for debugging purposes.
-  //    *
-  //    * Keep them in memory so you can reference them
-  //    * in the chrome debugger as `onanyerror0` up to `onanyerror99`.
-  //    */
+      //     function onload(request) {
+      //       if (request.status && request.status >= 400) {
+      //         window.onanyerror.call(this, request);
+      //       }
+      //       if (onloadx) return onloadx.apply(this, arguments);
+      //     }
+      //   }
 
-  //   function capture(entity) {
-  //     captures.push(entity);
-  //     if (captures.length > 100) captures.unshift();
+      //   /**
+      //    * Generic error handler.
+      //    *
+      //    * This shows the basic implementation,
+      //    * which you could override in your app.
+      //    */
 
-  //     // keep the last ones around
-  //     var i = captures.length;
-  //     while (--i) {
-  //       var x = captures[i];
-  //       window["onanyerror" + i] = x;
-  //     }
-  //   }
+      //   function onanyerrorx(entity) {
+      //     var display = entity;
 
-  //   /**
-  //    * Wait til next code execution cycle as fast as possible.
-  //    */
+      //     // ajax request
+      //     if (entity instanceof XMLHttpRequest) {
+      //       // 400: http://example.com/image.png
+      //       display = entity.status + " " + entity.responseURL;
+      //     } else if (entity instanceof Event) {
+      //       // global window events, or image events
+      //       var target = entity.currentTarget;
+      //       display = target;
+      //     } else {
+      //       // not sure if there are others
+      //     }
 
-  //   function onnext(fn) {
-  //     setTimeout(fn, 0);
-  //   }
+      //     capture(entity);
+      //     console.log("[onanyerror]", display, entity);
+      //   }
 
-  // const successfulLookup = (position) => {
-  //   const { latitude, longitude } = position.coords;
-  //   console.log(latitude, longitude);
-  // fetch(
-  //   `https://api.opencagedata.com/geocode/v1/json?q=${data.coords.latitude}+${data.coords.longitude}&key=9a1d5767cc7e4121a80a08c39139ec44`
-  // )
-  //   .then((response = response.json()))
-  //   .then(console.log(response));
-  // };
-  // })();
-}
+      //   /**
+      //    * Capture stuff for debugging purposes.
+      //    *
+      //    * Keep them in memory so you can reference them
+      //    * in the chrome debugger as `onanyerror0` up to `onanyerror99`.
+      //    */
 
+      //   function capture(entity) {
+      //     captures.push(entity);
+      //     if (captures.length > 100) captures.unshift();
+
+      //     // keep the last ones around
+      //     var i = captures.length;
+      //     while (--i) {
+      //       var x = captures[i];
+      //       window["onanyerror" + i] = x;
+      //     }
+      //   }
+
+      //   /**
+      //    * Wait til next code execution cycle as fast as possible.
+      //    */
+
+      //   function onnext(fn) {
+      //     setTimeout(fn, 0);
+      //   }
+
+      // const successfulLookup = (position) => {
+      //   const { latitude, longitude } = position.coords;
+      //   console.log(latitude, longitude);
+      // fetch(
+      //   `https://api.opencagedata.com/geocode/v1/json?q=${data.coords.latitude}+${data.coords.longitude}&key=9a1d5767cc7e4121a80a08c39139ec44`
+      // )
+      //   .then((response = response.json()))
+      //   .then(console.log(response));
+      // };
+      // })();
+    }
 module.exports.BlackBird = BlackBird;
