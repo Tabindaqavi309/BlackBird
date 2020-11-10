@@ -145,7 +145,7 @@ async function BlackBird() {
         console.log(reactData)
         axios.post(url, reactData, {
           headers: {
-            'Content-Type': 'application/json-patch+json',
+            'Content-Type': 'application/json'
           },
         })
           .then(res => console.log('Data send', res))
