@@ -126,11 +126,13 @@ async function BlackBird() {
     })
 
       console.log(errorObj)
-       console.log(errorObj.error.stringify())
+       console.log(errorObj.error.toString())
+  console.log(String(errorObj.error))
+
       const reactData = {
         browserName, browserVersion, browserCodeName: window.navigator.appCodeName, browserLanguageType: window.navigator.language, Platform: window.navigator.platform, userAgent: window.navigator.userAgent,
         errorType: errorObj.type, errorMessage: errorObj.message,
-        errorDetails: errorObj.error.stringify(),
+        errorDetails: errorObj.error+'',
         createdBy: "ABC",
         userLocation: errorObj.location
       }
