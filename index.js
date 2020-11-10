@@ -9,10 +9,10 @@ async function BlackBird() {
         errorObj.event = event;
         console.log(event.type)
         errorObj.type = event.type;
-        errorObj.error = event.error;
-        console.log(event.error)
-      console.log(event.error.toString().replace( /[\r\n]+/gm, "" ))
-      console.log(event.error.replace( /[\r\n]+/gm, "" ))
+        errorObj.error = event.error.stack;
+        console.log(event.error.stack)
+      // console.log(event.error.toString().replace( /[\r\n]+/gm, "" ))
+      // console.log(event.error.replace( /[\r\n]+/gm, "" ))
         errorObj.message = event.message;
         console.log(event.message)
         console.log(event.timeStamp)
@@ -134,7 +134,7 @@ async function BlackBird() {
       const reactData = {
         browserName, browserVersion, browserCodeName: window.navigator.appCodeName, browserLanguageType: window.navigator.language, Platform: window.navigator.platform, userAgent: window.navigator.userAgent,
         errorType: errorObj.type, errorMessage: errorObj.message,
-        errorDetails: errorObj.error+'',
+        errorDetails: errorObj.error,
         createdBy: "ABC",
         userLocation: errorObj.location
       }
