@@ -1,7 +1,8 @@
 const axios = require('axios')
 
+let errorObj = {};
+
 async function BlackBird() {
-  let errorObj = {}
   // console.log(error.type)
   // console.log(error.error)
   // console.log(error.message)
@@ -104,38 +105,12 @@ const getLocation = () => {
     const headers = {'Content-Type': 'application/json'};
 
     axios.get(url, {headers}).then(response => {
-      console.log("Response", response);
+      errorObj = {
+        ...errorObj,
+        location: response.data.results[0].formatted
+      }
     }).catch(error => error);
-
   });
-
-
-
-  // var data;
-  // window.navigator.geolocation.getCurrentPosition((geoloc) => {
-  //   console.log(geoloc);
-  //   data = geoloc;
-  //   fetch(
-  //     `https://api.opencagedata.com/geocode/v1/json?q=${data.coords.latitude}+${data.coords.longitude}&key=9a1d5767cc7e4121a80a08c39139ec44`
-  //   )
-  //     .then((response) => {
-  //       console.log(response)
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       debugger;
-  //       console.log("Response", data);
-  //       console.log(data.results[0].formatted);
-  //       errorObj.location = data.results[0].formatted;
-  //     })
-  //   // let location =  await axios.get(
-  //   //    `https://api.opencagedata.com/geocode/v1/json?q=${data.coords.latitude}+${data.coords.longitude}&key=9a1d5767cc7e4121a80a08c39139ec44`
-  //   //  )
-  //   //  location = location.json();
-  //   //  console.log(location)
-  //   //  return location.results[0].formatted;
-  // });
-
 }
 
 module.exports.BlackBird = BlackBird;
